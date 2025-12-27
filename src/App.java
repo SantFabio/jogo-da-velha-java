@@ -10,7 +10,7 @@ public class App {
     // considere que este valor não será alterado. 
     // Depois que você conseguir implementar o raciocionio para o tabuleiro 3x3
     // tente ajustar o código para funcionar para qualquer tamanho de tabuleiro
-    final static int TAMANHO_TABULEIRO = 4;
+    final static int TAMANHO_TABULEIRO = 3;
 
     static char[][] tabuleiro = new char[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
     
@@ -35,7 +35,7 @@ public class App {
 
         boolean jogoContinua;
 
-        testTabuleiro(8);
+        testTabuleiro(1);
 
 
         do {
