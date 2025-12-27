@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class App {
@@ -11,7 +10,7 @@ public class App {
     // considere que este valor não será alterado. 
     // Depois que você conseguir implementar o raciocionio para o tabuleiro 3x3
     // tente ajustar o código para funcionar para qualquer tamanho de tabuleiro
-    final static int TAMANHO_TABULEIRO = 3;
+    final static int TAMANHO_TABULEIRO = 4;
 
     static char[][] tabuleiro = new char[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
     
@@ -26,15 +25,18 @@ public class App {
         //TODO 01: chame as funções obterCaractereUsuario() e obterCaractereComputador
         //para definir quais caracteres da lista de caracteres aceitos que o jogador
         //quer configurar para ele e para o computador.
-        char caractereUsuario = ????;
-        char caractereComputador = ????;
+        char caractereUsuario = 'X';
+        char caractereComputador = 'O';
 
         // Esta variavel é utilizada para definir se o usuário começa a jogar ou não.
         // Valor true, usuario começa jogando, valor false computador começa.
         //TODO 02: obtenha o valor booleano sorteado
-        boolean vezUsuarioJogar = ????;
+        boolean vezUsuarioJogar = true;
 
         boolean jogoContinua;
+
+        testTabuleiro(8);
+
 
         do {
             // controla se o jogo terminou
@@ -47,8 +49,8 @@ public class App {
 
                 // Verifica se o usuario venceu
                 //TODO 04: Este if deve executar apenas se teve ganhador 
-                if ( /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
-                    
+                if ( teveGanhador(caractereUsuario) /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
+                    System.out.println("vitoria");
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
                     jogoContinua = false;
@@ -62,19 +64,19 @@ public class App {
 
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
-                if ( /*esreva aqui a chamada para teve ganhador*/ ) {
+                if (  teveGanhador(caractereComputador)/*esreva aqui a chamada para teve ganhador*/ ) {
 
                     //TODO 07: Exiba que o computador ganhou
                     jogoContinua = false;
                 }
 
                 //TODO 08: defina qual o vaor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
-                vezUsuarioJogar = ????;
+                vezUsuarioJogar = true;
             }
         
             //TODO 09: Este if deve executar apenas se o jogo continua E 
             //ocorreu tempate. Utilize o metodo teveEmpate()
-            if ( /*escreva aqui a condicao conforme o TODO acima*/ ) {
+            if ( false /*escreva aqui a condicao conforme o TODO acima*/ ) {
                 exibirTabuleiro();
                 exibirEmpate();
                 jogoContinua = false;
@@ -84,6 +86,61 @@ public class App {
         teclado.close();
     }
 
+    private static void testTabuleiro(int opc){
+
+        switch (opc) {
+            case 1:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= ' ';
+                tabuleiro[1][0]= 'X';tabuleiro[1][1]= 'O';tabuleiro[1][2]= 'O';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'O';
+                
+                break;
+            case 2:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= ' ';tabuleiro[1][2]= 'O';
+                tabuleiro[2][0]= 'O';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'X';
+                break;
+            case 3:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'O';tabuleiro[0][2]= ' ';
+                tabuleiro[1][0]= ' ';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'O';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'X';
+                break;
+            case 4:
+                tabuleiro[0][0]= ' '; tabuleiro[0][1]= 'X';tabuleiro[0][2]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'O';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'O';
+                break;
+            case 5:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= 'X';tabuleiro[0][3]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'O';tabuleiro[1][3]= ' ';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'O';tabuleiro[2][3]= 'X';
+                tabuleiro[3][0]= 'X';tabuleiro[3][1]= 'O';tabuleiro[3][2]= 'O';tabuleiro[3][3]= 'X';
+                break;
+            case 6:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= ' ';tabuleiro[0][3]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'O';tabuleiro[1][3]= ' ';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'X';tabuleiro[2][2]= 'O';tabuleiro[2][3]= 'X';
+                tabuleiro[3][0]= 'X';tabuleiro[3][1]= 'X';tabuleiro[3][2]= 'O';tabuleiro[3][3]= 'X';
+                break;
+            case 7:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= ' ';tabuleiro[0][2]= 'X';tabuleiro[0][3]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'O';tabuleiro[1][3]= ' ';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'X';tabuleiro[2][3]= 'X';
+                tabuleiro[3][0]= 'X';tabuleiro[3][1]= 'O';tabuleiro[3][2]= 'O';tabuleiro[3][3]= 'X';
+                break;
+            case 8:
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= ' ';tabuleiro[0][3]= 'X';
+                tabuleiro[1][0]= 'O';tabuleiro[1][1]= 'X';tabuleiro[1][2]= 'X';tabuleiro[1][3]= ' ';
+                tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'X';tabuleiro[2][2]= 'O';tabuleiro[2][3]= 'X';
+                tabuleiro[3][0]= 'X';tabuleiro[3][1]= 'O';tabuleiro[3][2]= 'O';tabuleiro[3][3]= 'X';
+                break;
+                
+
+        }
+        
+        
+       
+    }
 
     /*
      * Descrição: Utilizado para iniciar a matriz/tabuleiro com o caractere ' '
@@ -113,6 +170,7 @@ public class App {
      */
     static char obterCaractereUsuario() {
         //TODO 11: Implementar método conforme explicação
+        return 'u';
 
     }
 
@@ -131,6 +189,7 @@ public class App {
      */
     static char obterCaractereComputador(char caractereUsuario) {
         //TODO 12: Implementar método conforme explicação
+        return 'c';
     }
 
     /*
@@ -145,6 +204,7 @@ public class App {
      */
     static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
         //TODO 13: Implementar método conforme explicação
+        return true;
     }
 
     /*
@@ -174,6 +234,7 @@ public class App {
      */
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
         //TODO 14: Implementar método conforme explicação
+        return new int[] {1,1};
     }
 
     /*
@@ -201,6 +262,7 @@ public class App {
      */
     static int[] obterJogadaComputador(String posicoesLivres, Scanner teclado) {
         //TODO 15: Implementar método conforme explicação
+        return new int[] {1,2};
     }
 
     /*
@@ -213,7 +275,8 @@ public class App {
      * Nível de complexidade: 4 de 10
      */
     static int[] converterJogadaStringParaVetorInt(String jogada) {
-        //TODO 16: Implementar método conforme explicação
+        //TODO 16: Implementar método conforme 
+        return new int[] {1,2};
     }
 
     /*
@@ -257,6 +320,7 @@ public class App {
      */
     static String retornarPosicoesLivres() {
         //TODO 19: Implementar método conforme explicação
+        return "11;22";
     }
 
 
@@ -277,6 +341,12 @@ public class App {
      * Nível de complexidade: 8 de 10 se o tabuleiro dinâmico 
      */
     static boolean teveGanhador(char caractereJogador) {
+        
+        if(teveGanhadorLinha(caractereJogador)){return true;} 
+        else if (teveGanhadorColuna(caractereJogador)){return true;}
+        else if (teveGanhadorDiagonalPrincipal(caractereJogador)){return true;}
+        else if (teveGanhadorDiagonalSecundaria(caractereJogador)){return true;}
+        return false;
         //TODO 20: Implementar método conforme explicação
     }
 
@@ -293,18 +363,59 @@ public class App {
      */
     static boolean teveGanhadorLinha(char caractereJogador) {
         //TODO 21: Implementar método conforme explicação
+        for (int i = 0; i < tabuleiro.length ;i++){
+            for ( int j = 0 ; j < tabuleiro.length; j++){
+                if (tabuleiro[i][j] != caractereJogador){
+                    break;
+                }else if (j+1 == tabuleiro.length){
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 
     static boolean teveGanhadorColuna(char caractereJogador) {
         //TODO 22: Implementar método conforme explicação
+         for (int i = 0; i < tabuleiro.length ;i++){
+            for ( int j = 0 ; j < tabuleiro.length; j++){
+                if (tabuleiro[j][i] != caractereJogador){
+                    break;
+                }else if (j+1 == tabuleiro.length){
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 
     static boolean teveGanhadorDiagonalPrincipal( char caractereJogador) {
         //TODO 23: Implementar método conforme explicação
+        for (int i = 0; i < tabuleiro.length ;i++){
+            if (tabuleiro[i][i] != caractereJogador){
+                break;
+            }else if (i+1 == tabuleiro.length){
+                return true;
+            }
+        }
+        return false;
     }
 
     static boolean teveGanhadorDiagonalSecundaria(char caractereJogador) {
         //TODO 24: Implementar método conforme explicação
+        int j = 0;
+        for (int i = tabuleiro.length-1; i >= 0  ;i--){
+            if ( tabuleiro[i][j] != caractereJogador)
+                break;
+            j++;
+            if (j+1 == tabuleiro.length){
+                return true;
+            }
+            
+        }
+        return false;
     }
 
     /*
@@ -391,7 +502,7 @@ public class App {
      */
     static boolean teveEmpate() {
         //TODO 31: Implementar método conforme explicação
-
+        return false;
     }
 
     /*
@@ -404,6 +515,7 @@ public class App {
      */
     static boolean sortearValorBooleano() {
         //TODO 32: Implementar método conforme explicação
+        return false;
     }
 
 
