@@ -15,25 +15,23 @@ public class App {
     final static int TAMANHO_TABULEIRO = 3;
 
     static char[][] tabuleiro = new char[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
-    static int tamanho = TAMANHO_TABULEIRO;
+    static int tamanho = tabuleiro.length;
     static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        
         inicializarTabuleiro();
-
         // Definimos aqui qual é o caractere que cada jogador irá utilizar no jogo.
         //TODO 01: chame as funções obterCaractereUsuario() e obterCaractereComputador
         //para definir quais caracteres da lista de caracteres aceitos que o jogador
         //quer configurar para ele e para o computador.
-        char caractereUsuario = ????;
-        char caractereComputador = ????;
+        char caractereUsuario = obterCaractereUsuario();
+        char caractereComputador = obterCaractereComputador(caractereUsuario);
 
         // Esta variavel é utilizada para definir se o usuário começa a jogar ou não.
         // Valor true, usuario começa jogando, valor false computador começa.
         //TODO 02: obtenha o valor booleano sorteado
-        boolean vezUsuarioJogar = ????;
+        boolean vezUsuarioJogar = sortearValorBooleano();
 
         boolean jogoContinua;
 
@@ -43,39 +41,36 @@ public class App {
             exibirTabuleiro();
 
             if (vezUsuarioJogar){
-               
                 //TODO 03: Execute a chamada processar vez do usuario
-
+                processarVezUsuario(caractereUsuario);
                 // Verifica se o usuario venceu
                 //TODO 04: Este if deve executar apenas se teve ganhador 
-                if ( /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
-                    
+                if ( teveGanhador(caractereUsuario)) {
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
                     jogoContinua = false;
                 }
-
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
                 vezUsuarioJogar = false;
             } else {
-
                 //TODO 05: Execute a chamada processar vez do computador
-
+                processarVezComputador(caractereComputador);
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
-                if ( /*esreva aqui a chamada para teve ganhador*/ ) {
+                if (teveGanhador(caractereComputador)) {
 
                     //TODO 07: Exiba que o computador ganhou
+                    exibirTabuleiro();
+                    exibirVitoriaComputador();
                     jogoContinua = false;
                 }
-
                 //TODO 08: defina qual o vaor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
-                vezUsuarioJogar = ????;
+                vezUsuarioJogar = true;
             }
         
             //TODO 09: Este if deve executar apenas se o jogo continua E 
             //ocorreu tempate. Utilize o metodo teveEmpate()
-            if (teveEmpate()) {
+            if (jogoContinua && teveEmpate()) {
                 exibirTabuleiro();
                 exibirEmpate();
                 jogoContinua = false;
