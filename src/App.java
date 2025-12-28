@@ -35,7 +35,7 @@ public class App {
 
         boolean jogoContinua;
 
-        testTabuleiro(1);
+        //testTabuleiro(1);
 
 
         do {
@@ -50,7 +50,7 @@ public class App {
                 // Verifica se o usuario venceu
                 //TODO 04: Este if deve executar apenas se teve ganhador 
                 if ( teveGanhador(caractereUsuario) /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
-                    System.out.println("vitoria");
+                    
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
                     jogoContinua = false;
@@ -65,7 +65,7 @@ public class App {
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
                 if (  teveGanhador(caractereComputador)/*esreva aqui a chamada para teve ganhador*/ ) {
-
+                    
                     //TODO 07: Exiba que o computador ganhou
                     jogoContinua = false;
                 }
@@ -90,8 +90,8 @@ public class App {
 
         switch (opc) {
             case 1:
-                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'X';tabuleiro[0][2]= ' ';
-                tabuleiro[1][0]= 'X';tabuleiro[1][1]= 'O';tabuleiro[1][2]= 'O';
+                tabuleiro[0][0]= 'X'; tabuleiro[0][1]= 'O';tabuleiro[0][2]= ' ';
+                tabuleiro[1][0]= ' ';tabuleiro[1][1]= 'O';tabuleiro[1][2]= 'O';
                 tabuleiro[2][0]= 'X';tabuleiro[2][1]= 'O';tabuleiro[2][2]= 'O';
                 
                 break;
@@ -341,13 +341,13 @@ public class App {
      * Nível de complexidade: 8 de 10 se o tabuleiro dinâmico 
      */
     static boolean teveGanhador(char caractereJogador) {
+        //TODO 20: Implementar método conforme explicação
         
         if(teveGanhadorLinha(caractereJogador)){return true;} 
         else if (teveGanhadorColuna(caractereJogador)){return true;}
         else if (teveGanhadorDiagonalPrincipal(caractereJogador)){return true;}
         else if (teveGanhadorDiagonalSecundaria(caractereJogador)){return true;}
         return false;
-        //TODO 20: Implementar método conforme explicação
     }
 
     /*
