@@ -141,7 +141,8 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
-        //TODO 13: Implementar método conforme explicação
+    	String jogadaFormatada = String.valueOf(linha) + String.valueOf(coluna);
+        return posicoesLivres.contains(jogadaFormatada);
     }
 
     /*
@@ -282,7 +283,16 @@ public class App {
      * Nível de complexidade: 5 de 10
      */
     static String retornarPosicoesLivres() {
-        //TODO 19: Implementar método conforme explicação
+    	StringBuilder posicoes = new StringBuilder();
+
+        for (int i = 0; i < TAMANHO_TABULEIRO; i++) {
+            for (int j = 0; j < TAMANHO_TABULEIRO; j++) {
+                if (tabuleiro[i][j] == ' ') {
+                    posicoes.append(i).append(j).append(";");
+                }
+            }
+        }
+        return posicoes.toString();
     }
 
 
