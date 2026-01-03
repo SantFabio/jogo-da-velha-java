@@ -15,3 +15,4 @@ Thumbs.db
 
 # VS Code (caso volte a usar)
 .vscode/
+/bin/
