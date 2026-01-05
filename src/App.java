@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class App {
     // Estes caracteres são aceitos como caracteres para representarem
@@ -171,8 +172,42 @@ public class App {
      * Nível de complexidade: 5 de 10
      */
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
-        //TODO 14: Implementar método conforme explicação
-    }
+        int[] jogada = new int[2];
+        boolean jogadaValida = false;
+        
+        do {
+            try {
+                System.out.print("Digite linha e coluna (ex: 1 2): ");
+                String entrada = teclado.nextLine();
+                String[] posicoes = entrada.split(" ");
+                
+                // verifica se dois valores foram digitados
+                if (posicoes.length != 2) {
+                    System.out.println("Você deve digitar dois valores separados por espaço.");
+                    continue;
+                }
+                
+                // converte para int
+                int linha = Integer.parseInt(posicoes[0]) - 1;
+                int coluna = Integer.parseInt(posicoes[1]) - 1;
+                
+                // verifica se a posicao existe e está disponivel
+                if (jogadaValida(posicoesLivres, linha, coluna)) {
+                    jogada[0] = linha;
+                    jogada[1] = coluna;
+                    jogadaValida = true;
+                } else {
+                    System.out.println("Jogada inválida.");
+                }
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Você deve digitar apenas números.");
+            }
+            
+        } while (!jogadaValida);
+        
+        return jogada;
+}
 
     /*
      * Descrição: Utilizado para obter do computador a linha e a coluna sorteada.

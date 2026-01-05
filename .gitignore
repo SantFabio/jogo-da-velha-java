@@ -1,15 +1,64 @@
+# =========================
 # IntelliJ IDEA
+# =========================
 .idea/
 *.iml
-
-# Compilados Java
+*.ipr
+*.iws
 out/
+
+# =========================
+# Eclipse
+# =========================
+.classpath
+.project
+.settings/
+.metadata/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+# A extensão Java do VS Code gera os compilados aqui
+bin/
+# Extensão "Local History" (se alguém usar)
+.history/
+
+# =========================
+# NetBeans
+# =========================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# =========================
+# BlueJ (IDE Educacional comum)
+# =========================
+*.ctxt
+*.pkg
+package.bluej
+
+# =========================
+# Java / Build / Pacotes
+# =========================
+target/
 *.class
+*.jar
+*.war
+*.ear
 
-# Logs
+# =========================
+# Logs e Crash Dumps
+# =========================
 *.log
+hs_err_pid*
 
-# Sistema operacional
+# =========================
+# Sistema Operacional
+# =========================
 .DS_Store
 Thumbs.db
 
