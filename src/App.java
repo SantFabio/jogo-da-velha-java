@@ -95,8 +95,11 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static void inicializarTabuleiro() {
-        //TODO 10: Implementar método conforme explicação
-
+        for(int i = 0; i < TAMANHO_TABULEIRO; i++) {
+            for(int j = 0; j < TAMANHO_TABULEIRO; j++) {
+                tabuleiro[i][j] = ' ';
+            }
+        }
     }
 
     /*
@@ -472,8 +475,7 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static void atualizaTabuleiro(int[] jogada, char caractereJogador) {
-        //TODO 27: Implementar método conforme explicação
-
+        tabuleiro[jogada[0]][jogada[1]] = caractereJogador;
     }
 
     /*
