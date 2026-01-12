@@ -65,8 +65,8 @@ public class App {
     }
 
     static void inicializarTabuleiro() {
-        for (int i = 0; i < TAMANHO_TABULEIRO; i++) {
-            for (int j = 0; j < TAMANHO_TABULEIRO; j++) {
+        for(int i = 0; i < TAMANHO_TABULEIRO; i++) {
+            for(int j = 0; j < TAMANHO_TABULEIRO; j++) {
                 tabuleiro[i][j] = ' ';
             }
         }
