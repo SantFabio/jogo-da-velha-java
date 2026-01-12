@@ -117,10 +117,31 @@ public class App {
      * Nível de complexidade: 4 de 10
      */
     static char obterCaractereUsuario() {
-        // TODO 11: Implementar método conforme explicação
+        char caractere = ' ';
+        boolean caractereValido = false;
 
-    }
+        while (!caractereValido) {
+            System.out.print("Informe o caractere que deseja utilizar (X, O, U ou C): ");
+            String input = teclado.nextLine().toUpperCase();
+            
+            // verifica se digitou apenas 1 caractere
+            if (input.length() != 1) {
+                System.out.println("Erro: Digite apenas um caractere.");
+                continue;
+            }
+            
+            caractere = input.charAt(0);
+            
+            // verifica se o caractere está na lista de aceitos
+            if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(caractere) != -1) {
+                caractereValido = true;
+            } else {
+                System.out.println("Caractere inválido. Escolha entre: " + CARACTERES_IDENTIFICADORES_ACEITOS);
+            }
+        }
 
+    return caractere;
+}
     /*
      * Descrição: Utilizado para obter no início do jogo qual o caractere que o
      * usuário quer utilizar para representar o computador. Este método recebe o
@@ -135,7 +156,14 @@ public class App {
      * Nível de complexidade: 4 de 10
      */
     static char obterCaractereComputador(char caractereUsuario) {
-        // TODO 12: Implementar método conforme explicação
+        char caractereComputador;
+
+        if(caractereUsuario == 'X') caractereComputador = 'O';
+        else if(caractereUsuario == 'O') caractereComputador = 'X';
+        else if(caractereUsuario == 'C') caractereComputador = 'U';
+        else caractereComputador = 'C';
+        
+        return caractereComputador;
     }
 
     /*
@@ -272,7 +300,12 @@ public class App {
      */
 
     static int[] converterJogadaStringParaVetorInt(String jogada) {
-        // TODO 16: Implementar método conforme explicação
+        int[] jogadaVetor = new int[2];
+
+        jogadaVetor[0] = Character.getNumericValue(jogada.charAt(0));
+        jogadaVetor[1] = Character.getNumericValue(jogada.charAt(1));
+
+        return jogadaVetor;
     }
 
     /*
@@ -356,7 +389,14 @@ public class App {
      * Nível de complexidade: 8 de 10 se o tabuleiro dinâmico
      */
     static boolean teveGanhador(char caractereJogador) {
-        // TODO 20: Implementar método conforme explicação
+        boolean teveVencedor;
+
+        teveVencedor =  teveGanhadorColuna(caractereJogador) ||
+                        teveGanhadorLinha(caractereJogador) ||
+                        teveGanhadorDiagonalPrincipal(caractereJogador) ||
+                        teveGanhadorDiagonalSecundaria(caractereJogador);
+
+        return teveVencedor;
     }
 
     /*
