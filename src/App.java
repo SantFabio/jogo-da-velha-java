@@ -23,7 +23,6 @@ public class App {
 
         inicializarTabuleiro();
         // Definimos aqui qual é o caractere que cada jogador irá utilizar no jogo.
-        // TODO 01: chame as funções obterCaractereUsuario() e obterCaractereComputador
         // para definir quais caracteres da lista de caracteres aceitos que o jogador
         // quer configurar para ele e para o computador.
         char caractereUsuario = obterCaractereUsuario();
@@ -31,7 +30,6 @@ public class App {
 
         // Esta variavel é utilizada para definir se o usuário começa a jogar ou não.
         // Valor true, usuario começa jogando, valor false computador começa.
-        // TODO 02: obtenha o valor booleano sorteado
         boolean vezUsuarioJogar = sortearValorBooleano();
 
         boolean jogoContinua;
@@ -42,10 +40,8 @@ public class App {
             exibirTabuleiro();
 
             if (vezUsuarioJogar) {
-                // TODO 03: Execute a chamada processar vez do usuario
                 processarVezUsuario(caractereUsuario);
                 // Verifica se o usuario venceu
-                // TODO 04: Este if deve executar apenas se teve ganhador
                 if (teveGanhador(caractereUsuario)) {
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
@@ -55,23 +51,17 @@ public class App {
                 // vez do computador
                 vezUsuarioJogar = false;
             } else {
-                // TODO 05: Execute a chamada processar vez do computador
                 processarVezComputador(caractereComputador);
                 // Verifica se o computador venceu
-                // TODO 06: Este if deve executar apenas se teve ganhador
                 if (teveGanhador(caractereComputador)) {
-
-                    // TODO 07: Exiba que o computador ganhou
                     exibirTabuleiro();
                     exibirVitoriaComputador();
                     jogoContinua = false;
                 }
-                // TODO 08: defina qual o vaor a variavel abaixo deve possuir para que a proxima
                 // execucao do laco seja a vez do usuário
                 vezUsuarioJogar = true;
             }
 
-            // TODO 09: Este if deve executar apenas se o jogo continua E
             // ocorreu tempate. Utilize o metodo teveEmpate()
             if (jogoContinua && teveEmpate()) {
                 exibirTabuleiro();
@@ -315,7 +305,6 @@ public class App {
      * Nível de complexidade: 5 de 10
      */
     static void processarVezUsuario(char caractereUsuario) {
-        // TODO 17: Implementar método conforme explicação
         System.out.println("Sua vez!");
         int[] jogadaUsuario = obterJogadaUsuario(retornarPosicoesLivres(), teclado);
         atualizaTabuleiro(jogadaUsuario, caractereUsuario);
@@ -419,7 +408,6 @@ public class App {
                 return true;
             }
         }
-        // TODO 21: Implementar método conforme explicação
         return false;
     }
 
@@ -436,9 +424,7 @@ public class App {
                 return teveGanhadorColuna;
             }
         }
-        // TODO 21: Implementar método conforme explicação
         return false;
-        // TODO 22: Implementar método conforme explicação
     }
 
     static boolean teveGanhadorDiagonalPrincipal(char caractereJogador) {
@@ -450,7 +436,6 @@ public class App {
         }
     // Se o loop terminou sem dar 'return false', então todos eram iguais!
         return true;
-        // TODO 23: Implementar método conforme explicação
     }
 
     static boolean teveGanhadorDiagonalSecundaria(char caractereJogador) {
@@ -460,7 +445,6 @@ public class App {
             }
         }
         return true;
-        // TODO 24: Implementar método conforme explicação
     }
 
     /*
@@ -470,7 +454,6 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static void limparTela() {
-        // TODO 25: Implementar método conforme explicação
         try {
             // Aqui identificamos o sistema operacional
             String os = System.getProperty("os.name").toLowerCase();
@@ -499,7 +482,6 @@ public class App {
      * Nível de complexidade: 4 de 10
      */
     static void exibirTabuleiro() {
-        // TODO 26: Implementar método conforme explicação
         // execute no início deste método a chamada ao método limparTela
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
         limparTela();
@@ -702,7 +684,6 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static boolean teveEmpate() {
-        // TODO 31: Implementar método conforme explicação
         return Objects.equals(retornarPosicoesLivres(), "");
     }
 
